@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<application>
+
+	<!-- Begin Forecast -->
+	
+	<command name="checkregister" action-class="com.infrastructure.conrollerframework.controller.Register" default-command="true">
+		 <accessable-roles>
+		 			<role value="public"/>
+		</accessable-roles>
+	</command>
+	<command name="checklogon" action-class="com.infrastructure.conrollerframework.controller.logon" default-command="false">
+		 <accessable-roles>
+		 			<role value="public"/>
+		</accessable-roles>
+	</command>
+	
+	
+	 
+	  
+
+
+</application>

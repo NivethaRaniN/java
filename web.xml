@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  <!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">-->
+
+<web-app>
+  <display-name>Test code</display-name>
+
+ <filter>
+	 <filter-name>UserPostLoginFilter</filter-name>
+
+	 <filter-class>com.infrastructure.conrollerframework.login.UserPostLoginFilter</filter-class>
+ </filter>
+ 
+
+<filter-mapping>
+	<filter-name>UserPostLoginFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping> 
+ 
+<session-config>
+      <session-timeout>30</session-timeout>
+   </session-config>
+
+  <!-- The Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>ALL Resources</web-resource-name>
+			<description></description>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/resources/*</url-pattern>
+			<url-pattern>/sample/*</url-pattern>
+		
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>TRACE</http-method>
+			<http-method>POST</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>OPTIONS</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description></description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	 
+
+	<security-role>
+ 		<role-name>ROLE1</role-name>
+	</security-role>
+	<security-role>
+ 		<role-name>ROLE2</role-name>
+	</security-role>
+	<security-role>
+ 		<role-name>ROLE3</role-name>
+	</security-role>
+	<security-role>
+ 		<role-name>ROLE4</role-name>
+	</security-role>
+	<security-role>
+ 		<role-name>ROLE5</role-name>
+	</security-role>
+	<security-role>
+ 		<role-name>ROLE_ALL</role-name>
+	</security-role>	
+
+ 	<security-role>
+			<description></description>
+			<role-name>admin</role-name>
+	</security-role>
+	
+	
+	<servlet>
+	<servlet-name>ControllerServlet</servlet-name>
+	<servlet-class>/sample/src/com.infrastructure.conrollerframework.controller/ControllerServlet.java</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>ControllerServlet</servlet-name>
+	<url-pattern>/ControllerServlet</url-pattern>
+	</servlet-mapping>
+	
+
+  
+
+</web-app>

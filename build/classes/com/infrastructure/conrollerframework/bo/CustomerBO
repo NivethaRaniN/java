@@ -1,0 +1,53 @@
+
+package com.infrastructure.conrollerframework.bo;
+
+import com.infrastructure.conrollerframework.data.HttpRequestProxy;
+import com.infrastructure.exception.BaseException;
+
+public class CustomerBO extends  BaseBO {
+
+
+
+	public CustomerVO addEntry(HttpRequestProxy request)
+					throws BaseException {
+
+				CustomerVO cvo =(CustomerVO) getRequestValueObject(request);
+
+				System.out.println("This is BO ");
+				System.out.println("Here AddEntry method UpdateCustomerBO called ");
+				System.out.println("CustomerId is ---------->"+cvo.getCustomerId());
+				return cvo;
+			}
+
+	public CustomerVO addNewCustomerBO(HttpRequestProxy request)
+					throws BaseException {
+
+				CustomerVO cvo =(CustomerVO) getRequestValueObject(request);
+				DataAccessDelegate dad =new DataAccessDelegate("CustomerInformation");
+				CustomerInformationPGDAO  custiddao=(CustomerInformationPGDAO) dad.getDAO("CustomerInformation",4);
+				cvo.setStatus(custiddao.addNewCustomerDAO());
+				return cvo;
+			}
+
+	public CustomerVO addNewUsedCarCustomerBO(HttpRequestProxy request)
+						throws BaseException {
+
+					CustomerVO cvo =(CustomerVO) getRequestValueObject(request);
+					DataAccessDelegate dad =new DataAccessDelegate("CustomerInformation");
+					CustomerInformationPGDAO  custiddao=(CustomerInformationPGDAO) dad.getDAO("CustomerInformation",4);
+					cvo.setStatus(custiddao.addNewUsedCarCustomerDAO(cvo));
+					return cvo;
+			}
+
+	public CollectionVO searchAvailableCustomers(HttpRequestProxy request)
+						throws BaseException {
+
+					CustomerVO cvo =(CustomerVO) getRequestValueObject(request);
+					DataAccessDelegate dad =new DataAccessDelegate("CustomerInformation");
+					CustomerInformationPGDAO  custiddao=(CustomerInformationPGDAO) dad.getDAO("CustomerInformation",4);
+
+					return custiddao.searchAvailableCustomers(cvo);
+			}
+
+
+}
